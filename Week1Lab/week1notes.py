@@ -1,3 +1,6 @@
+# This is the file I'll be using for notes
+
+
 # Name variable in relation to what their values are
 game="Minecraft"
 print(game)
