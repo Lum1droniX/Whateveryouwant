@@ -23,20 +23,20 @@ print(Equation2)
     # A string is text data.
 
 Message = "Hello World"
-IndexTest = Message  # This is the string variable that calls the other string I created.
+CallMessage = (f'Your message was "{Message}"')  # This is the string variable that calls the other string I created.
 
-print(IndexTest)
+print(CallMessage)
 
-FirstChar = IndexTest[0]
+FirstChar = Message[0]
 print(FirstChar)
 
-SeventhChar = IndexTest[6]
+SeventhChar = Message[6]
 print(SeventhChar)
 
-FirstWord = IndexTest[0:5]
+FirstWord = Message[0:5]
 print(FirstWord)
 
-LastWord = IndexTest[6:11]
+LastWord = Message[6:11]
 print(LastWord)
 
 # ----------------------------------------------------------
