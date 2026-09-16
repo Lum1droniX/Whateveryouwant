@@ -1,13 +1,19 @@
-# This code is meant to recreate a simplified game of European roulette.
+# Hayden Fillmore
 
-import random
+    # This code is meant to recreate an overly simplified version of the game European roulette.
+    # This version of the game is only capable of Even Money and Staight Up bets, although I might add more in the future if I get bored :P
+    # I've done my best to accurately recreate the probablities of a European roulette table using the random.choice() function.
+    # Instead of terminating the program on invalid input by breaking the "while True" loop, I made it give an error for simplicity's sake.
+
+import random     # This allows access to the random.choice() feature.
 
 # ==========
 
 print("================================")
 print("")
 print("The following code was made to recreate a game of roulette:")
-print("")
+
+# ==========
 
 NumberList = list(range(0, 37))
 RedValues = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
@@ -18,41 +24,41 @@ while True:
 
     if Balance <= 0:
         print("")
-        print("=====================")
+        print("=-=-=-=-=-=-=-=-=-=-=")
         print("You ran out of money!")
-        print("=====================")
+        print("=-=-=-=-=-=-=-=-=-=-=")
         print("")
         break
 
-    print(f"Your balance is {Balance}")
+    print("")
+    print(f"Your current balance is {Balance}: ")
     print("")
     print("============================================================")
     BetValue = input("How much would you like to bet, or would you rather [LEAVE]? ").upper()
     print("============================================================")
     print("")
-    StartingBet = int(BetValue)
 
-    if StartingBet == "LEAVE":
+    if BetValue == "LEAVE":
+        print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
         print(f"Your final balance was {Balance}!")
+        print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+        print("")
         break
+    else:
+        BetInterger = int(BetValue)
 
-    CurrentPot = int(StartingBet)
-
-    if StartingBet > Balance:
-        print("Bet is too high!")
-
-    Balance -= CurrentPot
+    Balance -= BetInterger
 
 # ==========
 
-    print(f"You bet {StartingBet}, your remaining balance is {Balance}")
+    print(f"You bet {BetInterger}, your remaining balance is {Balance}")
     print("")
 
-    BetInput = input("How would you like to bet (Odd/Even, 1-36, Black/White/Green)? ").upper()
-    if BetInput == str(range(0, 37)):
-        BetValue = int(BetValue)
-    else:
-        BetValue = str(BetValue)
+    UserChoice = input("How would you like to bet (Odd/Even, Black/Red/Green, or 0-36)? ").upper()
+    if UserChoice.isdigit():
+        BetChoice = int(UserChoice)
+    elif UserChoice in ["ODD", "EVEN", "BLACK", "RED", "GREEN"]:
+        BetChoice = str(UserChoice)
 
     print("")
 
@@ -60,7 +66,7 @@ while True:
     IsGreen = RouletteNumber == GreenValue
     IsRed = RouletteNumber in RedValues
     IsBlack = not IsGreen and not IsRed
-    IsEven = RouletteNumber % 2 == 0
+    IsEven = RouletteNumber % 2 == 0 and RouletteNumber != 0
     IsOdd = RouletteNumber % 2 != 0
 
     if IsGreen:
@@ -75,27 +81,30 @@ while True:
     # ==========
 
     BetWin = False
-    if BetValue == "ODD" and IsOdd:
+
+    if BetChoice == "ODD" and IsOdd:
         BetWin = True
-    elif BetValue == "EVEN" and IsEven:
+    elif BetChoice == "EVEN" and IsEven:
         BetWin = True
-    elif BetValue == "GREEN" and IsGreen:
+    elif BetChoice == "GREEN" and IsGreen:
         BetWin = True
-    elif BetValue == "RED" and IsRed:
+    elif BetChoice == "RED" and IsRed:
         BetWin = True
-    elif BetValue == "BLACK" and IsBlack:
+    elif BetChoice == "BLACK" and IsBlack:
         BetWin = True
-    elif BetValue == RouletteNumber:
+    elif BetChoice == RouletteNumber:
         BetWin = True
     else:
         BetWin = False
 
     if BetWin == True:
-        print("Your bet won!")
-        if BetValue == RouletteNumber or BetValue == "GREEN":
-            Balance += 35 * BetValue
+        if BetChoice == RouletteNumber or BetChoice == "GREEN":
+            PotWinnings = BetInterger * 36
+            Balance += PotWinnings
         else:
-            Balance += 2 * BetValue
+            PotWinnings = BetInterger * 2
+            Balance += PotWinnings
+        print(f"Your {BetInterger} bet won {PotWinnings}!")
 
     if BetWin == False:
-        print("Your bet lost!")
+        print(f"Your lost your {BetInterger} bet!")
