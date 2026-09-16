@@ -4,11 +4,11 @@ PercentGrade = float(input("What grade percentage did you get? "))
 if PercentGrade < 60:
     print("You recieved an F!")
 elif PercentGrade >= 60 and PercentGrade < 70:
-    print("You recieved an D!")
+    print("You recieved a D!")
 elif PercentGrade >= 70 and PercentGrade < 80:
-    print("You recieved an C!")
+    print("You recieved a C!")
 elif PercentGrade >= 70 and PercentGrade < 90:
-    print("You recieved an B!")
+    print("You recieved a B!")
 else:
     print("You recieved an A!")
 
