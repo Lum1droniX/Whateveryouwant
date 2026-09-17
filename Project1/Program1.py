@@ -1,6 +1,6 @@
 # Hayden Fillmore
 
-    # This code is meant to recreate an overly simplified version of the game European roulette.
+    # This project is meant to recreate an overly simplified version of the game European roulette.
     # This version of the game is only capable of Even Money and Staight Up bets, although I might add more in the future if I get bored :P
     # I've done my best to accurately recreate the probablities of a European roulette table using the random.choice() function.
     # Instead of terminating the program on invalid input by breaking the "while True" loop, I made it give an error for simplicity's sake.
