@@ -18,9 +18,9 @@ while True:
     if ConvertInput == "DECIMAL":
         while True:
             print("")
-            DecimalInput = int(input("What is your decimal value (0-255)? "))
+            DecimalInput = input("What is your decimal value (0-255)? ")
             print("")
-            if not 0 <= DecimalInput <= 255:
+            if not 0 <= int(DecimalInput) <= 255:
                 print("Decimal value must be between 0 and 255!")
             else:
                 break
@@ -42,39 +42,37 @@ while True:
 
 if ConvertInput == "DECIMAL":
 
-    DecimalValue = int(DecimalInput)
-    DecimalSum = []
+    DecimalValue = int(DecimalInput) 
+    DecimalSum = ["0", "0", "0", "0", "0", "0", "0", "0"]
 
     while True:
 
         if DecimalValue >= 128:
-            DecimalSum.append("1")
+            str.replace(DecimalSum[0], "0", "1")
             DecimalValue -= 128
-        if 128 < DecimalValue <= 64:
-            DecimalSum.append("1")
+        elif 128 < DecimalValue  <= 64:
+            str.replace(DecimalSum[1], "0", "1")
             DecimalValue -= 64
-        if 64 < DecimalValue <= 32:
-            DecimalSum.append("1")
+        elif 64 < DecimalValue  <= 32:
+            str.replace(DecimalSum[2], "0", "1")
             DecimalValue -= 32
-        if 32 < DecimalValue <= 16:
-            DecimalSum.append("1")
+        elif 32 < DecimalValue <= 16:
+            str.replace(DecimalSum[3], "0", "1")
             DecimalValue -= 16
-        if 16 < DecimalValue <= 8:
-            DecimalSum.append("1")
+        elif 16 < DecimalValue <= 8:
+            str.replace(DecimalSum[4], "0", "1")
             DecimalValue -= 8
-        if 8 < DecimalValue <= 4:
-            DecimalSum.append("1")
+        elif 8 < DecimalValue <= 4:
+            str.replace(DecimalSum[5], "0", "1")
             DecimalValue -= 4
-        if 4 < DecimalValue <= 2:
-            DecimalSum.append("1")
+        elif 4 < DecimalValue <= 2:
+            str.replace(DecimalSum[6], "0", "1")
             DecimalValue -= 2
-        if 2 < DecimalValue <= 1:
-            DecimalSum.append("1")
+        elif 2 < DecimalValue <= 1:
+            str.replace(DecimalSum[7], "0", "1")
             DecimalValue -= 1
-        elif DecimalValue == 0:
-            break
         else:
-            DecimalSum.append("0")
+            break
 
     print("")
     print(f"Your decimal value is {"".join(DecimalSum)} in binary!")
