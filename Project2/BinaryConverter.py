@@ -7,7 +7,7 @@
 
 print("================================")
 print("")
-print("The following code was made to convert Decimal to Binary and vice versa:")
+print("The following code was made to convert Decimal to Binary, vice versa:")
 
 # ==========
 
@@ -21,7 +21,7 @@ while True:
             DecimalInput = input("What is your decimal value (0-255)? ")
             print("")
             if not 0 <= int(DecimalInput) <= 255:
-                print("Decimal value must be between 0 and 255!")
+                print("--==<{ Decimal value must be between 0 and 255! }>==--")
             else:
                 break
         break
@@ -29,14 +29,18 @@ while True:
         while True:
             print("")
             BinaryInput = input("What is your 8-bit binary value (ex. 10110101)? ")
+            print("")
             if len(BinaryInput) != 8:
-                print("Binary must be 8-bits!")
+                print("--==<{ Binary must be 8-bits! }>==--")
             else:
                 break
         break
     else:
         print("")
-        print("Invalid input!")
+        print("--==<{ Invalid input! }>==--")
+
+print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+
 
 # ==========
 
@@ -46,30 +50,29 @@ if ConvertInput == "DECIMAL":
     DecimalSum = ["0", "0", "0", "0", "0", "0", "0", "0"]
 
     while True:
-
-        if DecimalValue >= 128:
-            str.replace(DecimalSum[0], "0", "1")
+        if 255 >= DecimalValue >= 128:
+            DecimalSum[0] = "1"
             DecimalValue -= 128
-        elif 128 < DecimalValue  <= 64:
-            str.replace(DecimalSum[1], "0", "1")
+        elif 128 > DecimalValue >= 64:
+            DecimalSum[1] = "1"
             DecimalValue -= 64
-        elif 64 < DecimalValue  <= 32:
-            str.replace(DecimalSum[2], "0", "1")
+        elif 64 > DecimalValue >= 32:
+            DecimalSum[2] = "1"
             DecimalValue -= 32
-        elif 32 < DecimalValue <= 16:
-            str.replace(DecimalSum[3], "0", "1")
+        elif 32 > DecimalValue >= 16:
+            DecimalSum[3] = "1"
             DecimalValue -= 16
-        elif 16 < DecimalValue <= 8:
-            str.replace(DecimalSum[4], "0", "1")
+        elif 16 > DecimalValue >= 8:
+            DecimalSum[4] = "1"
             DecimalValue -= 8
-        elif 8 < DecimalValue <= 4:
-            str.replace(DecimalSum[5], "0", "1")
+        elif 8 > DecimalValue >= 4:
+            DecimalSum[5] = "1"
             DecimalValue -= 4
-        elif 4 < DecimalValue <= 2:
-            str.replace(DecimalSum[6], "0", "1")
+        elif 4 > DecimalValue >= 2:
+            DecimalSum[6] = "1"
             DecimalValue -= 2
-        elif 2 < DecimalValue <= 1:
-            str.replace(DecimalSum[7], "0", "1")
+        elif DecimalValue == 1:
+            DecimalSum[7] = "1"
             DecimalValue -= 1
         else:
             break
