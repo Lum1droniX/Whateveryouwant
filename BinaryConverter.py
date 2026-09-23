@@ -40,10 +40,9 @@ while True:
 
 # ==========
 
-DecimalValue = int(DecimalInput)
-
 if ConvertInput == "DECIMAL":
 
+    DecimalValue = int(DecimalInput)
     DecimalSum = []
 
     while True:
