@@ -1,7 +1,11 @@
 # Hayden Fillmore
 
-    # This personal project is meant to convert binary values to decimal and vice versa.
+    # This personal project is meant to convert 8-bit binary values to decimal and vice versa.
     # I had a stroke of inspiration while doing my networking homework to create a binary converter.
+    # Most of the project was simple, although I did get stuck trying to update the DecimalSum list with 1s.
+    # Turns out I just needed to update the list with indexing as .replace doesn't update the original list.
+    # Coming back after finishing the hexadecimal converter, I've really want to optimize the code as it's quite bulky.
+    # One idea I had was to sort them via a list of their base 2 exponents, but I have yet to find Python's logarithms.
 
 # ==========
 
@@ -14,11 +18,11 @@ print("The following code was made to convert Decimal to Binary, vice versa:")
 while True:
 
     print("")
-    ConvertInput = input("Would you like to convert a Decimal or Binary value? ").upper()
+    ConvertInput = input("Would you like to convert a Decimal or Binary value? >").upper()
     if ConvertInput == "DECIMAL":
         while True:
             print("")
-            DecimalInput = input("What is your decimal value (0-255)? ")
+            DecimalInput = input("What is your decimal value (0-255)? >")
             print("")
             if not 0 <= int(DecimalInput) <= 255:
                 print("--==<{ Decimal value must be between 0 and 255! }>==--")
@@ -28,7 +32,7 @@ while True:
     elif ConvertInput == "BINARY":
         while True:
             print("")
-            BinaryInput = input("What is your 8-bit binary value (ex. 10110101)? ")
+            BinaryInput = input("What is your 8-bit binary value (ex. 10110101)? >")
             print("")
             if len(BinaryInput) != 8:
                 print("--==<{ Binary must be 8-bits! }>==--")
