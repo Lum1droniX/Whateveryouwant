@@ -18,7 +18,6 @@ print("The following code was made to convert Decimal to Hexadecimal, vice versa
 HexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
 
 while True:
-
     print("")
     ConvertInput = input("Would you like to convert a Decimal or Hexadecimal [Hex] value? >").upper()
     if ConvertInput == "DECIMAL":
@@ -64,7 +63,6 @@ if ConvertInput == "HEXADECIMAL" or ConvertInput == "HEX":
 
     Decimal1 = HexValues.index(HexInput[0])
     Decimal2 = HexValues.index(HexInput[1])
-    
     DecimalOutput = (Decimal1 * 16) + Decimal2
     
     print("")
