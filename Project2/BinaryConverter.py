@@ -4,8 +4,7 @@
     # I had a stroke of inspiration while doing my networking homework to create a binary converter.
     # Most of the project was simple, although I did get stuck trying to update the DecimalSum list with 1s.
     # Turns out I just needed to update the list with indexing as .replace doesn't update the original list.
-    # Coming back after finishing the hexadecimal converter, I've really want to optimize the code as it's quite bulky.
-    # One idea I had was to sort them via a list of their base 2 exponents, but I have yet to find Python's logarithms.
+    # Came back after finishing HexConverter.py and found the floor divison / modulo method works perfectly.
 
 # ==========
 
@@ -15,8 +14,9 @@ print("The following code was made to convert Decimal to Binary, vice versa:")
 
 # ==========
 
-while True:
+SumIndex = 7
 
+while True:
     print("")
     ConvertInput = input("Would you like to convert a Decimal or Binary value? >").upper()
     if ConvertInput == "DECIMAL":
@@ -45,41 +45,18 @@ while True:
 
 print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 
-
 # ==========
 
 if ConvertInput == "DECIMAL":
 
-    DecimalValue = int(DecimalInput) 
+    DecimalInt = int(DecimalInput)
     DecimalSum = ["0", "0", "0", "0", "0", "0", "0", "0"]
 
-    while True:
-        if 255 >= DecimalValue >= 128:
-            DecimalSum[0] = "1"
-            DecimalValue -= 128
-        elif 128 > DecimalValue >= 64:
-            DecimalSum[1] = "1"
-            DecimalValue -= 64
-        elif 64 > DecimalValue >= 32:
-            DecimalSum[2] = "1"
-            DecimalValue -= 32
-        elif 32 > DecimalValue >= 16:
-            DecimalSum[3] = "1"
-            DecimalValue -= 16
-        elif 16 > DecimalValue >= 8:
-            DecimalSum[4] = "1"
-            DecimalValue -= 8
-        elif 8 > DecimalValue >= 4:
-            DecimalSum[5] = "1"
-            DecimalValue -= 4
-        elif 4 > DecimalValue >= 2:
-            DecimalSum[6] = "1"
-            DecimalValue -= 2
-        elif DecimalValue == 1:
-            DecimalSum[7] = "1"
-            DecimalValue -= 1
-        else:
-            break
+    while DecimalInt > 0:
+        BinaryValue = DecimalInt % 2
+        DecimalSum[SumIndex] = str(BinaryValue)
+        DecimalInt //= 2
+        SumIndex -= 1
 
     print("")
     print(f"Your decimal value is {"".join(DecimalSum)} in binary!")
@@ -91,24 +68,10 @@ if ConvertInput == "BINARY":
 
     BinarySum = []
 
-    if BinaryInput[0] == "1":
-        BinarySum.append(128)
-    if BinaryInput[1] == "1":
-        BinarySum.append(64)
-    if BinaryInput[2] == "1":
-        BinarySum.append(32)
-    if BinaryInput[3] == "1":
-        BinarySum.append(16)
-    if BinaryInput[4] == "1":
-        BinarySum.append(8)
-    if BinaryInput[5] == "1":
-        BinarySum.append(4)
-    if BinaryInput[6] == "1":
-        BinarySum.append(2)
-    if BinaryInput[7] == "1":
-        BinarySum.append(1)
-    else:
-        BinarySum.append(0)
+    while len(BinarySum) != 8 and SumIndex > -1:
+        if BinaryInput[7 - SumIndex] == "1":
+            BinarySum.append(2 ** SumIndex)
+        SumIndex -= 1
 
     print("")
     print(f"Your binary value is {sum(BinarySum)} in decimal!")
