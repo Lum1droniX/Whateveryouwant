@@ -63,7 +63,7 @@ if ConvertInput == "DECIMAL":
     DecimalSum = ["0", "0", "0", "0", "0", "0", "0", "0"]
 
     while DecimalInt > 0:                            # This loop repeats itself until the user's interger input reaches the negatives.
-        BinaryValue = DecimalInt % 2                 # This equation takes the remainder of the input divided by which can only be 1 or 0, perfect for binary
+        BinaryValue = DecimalInt % 2                 # This equation takes the remainder of the input divided by 2 which can only be 1 or 0, perfect for binary.
         DecimalSum[SumIndex] = str(BinaryValue)      # This equation searches through the list starting at the last 0, then sets it equal to the result of the previous equation.
         DecimalInt //= 2                             # This equation divides the original decimal input without decimals for use in future loop calculations.
         SumIndex -= 1                                # This equation updates the indexing variable, functionally moving the calculations one digit to the left.

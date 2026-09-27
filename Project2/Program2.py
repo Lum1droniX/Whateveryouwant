@@ -58,7 +58,7 @@ print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 # This block takes the input from above and runs the necessary calculations to convert the decimal value into hexadecimal.
 if ConvertInput == "DECIMAL":
 
-    HexHalf1 = int(DecimalInput) // 16               # This variable floor divides the decimal input by 16 to serve as the first half of the hexadecimal result
+    HexHalf1 = int(DecimalInput) // 16               # This variable floor divides the decimal input by 16 to serve as the first half of the hexadecimal result.
     HexHalf2 = int(DecimalInput) % 16                # This variable takes the remainder of said floor division to serve as the second half of the hexadecimal result.
 
     # This f-string takes the list value at the position of the first equation's result, followed by the second equation's result, then prints them together for the result.
@@ -72,8 +72,8 @@ if ConvertInput == "DECIMAL":
 if ConvertInput == "HEXADECIMAL" or ConvertInput == "HEX":
 
     Decimal1 = HexValues.index(HexInput[0])          # This variable searches the values list for the first occurance of the value in the first input character.
-    Decimal2 = HexValues.index(HexInput[1])          # This variable searches the values list for the first occurance of the value in the second input character
-    DecimalOutput = (Decimal1 * 16) + Decimal2       # This equation takes the previous two values and multiplies them by their base value (i.e. 16^1 and 16^0)
+    Decimal2 = HexValues.index(HexInput[1])          # This variable searches the values list for the first occurance of the value in the second input character.
+    DecimalOutput = (Decimal1 * 16) + Decimal2       # This equation takes the previous two values and multiplies them by their base value (i.e. 16^1 and 16^0).
     
     print("")
     print(f"Your hexadecimal value is {DecimalOutput} in decimal!")
