@@ -33,43 +33,38 @@ while not 0 <= Y2Position <= 30:
 print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
 print("")
 
-PlottedPoint = "[■]"
+PlottedPoint = "{■}"
 
 # ==========
 
-def BresenhamLine(X1Position, Y1Position, X2Position, Y2Position):
-    ChangeX = abs(X2Position - X1Position)
-    ChangeY = abs(Y2Position - Y1Position)
+ChangeX = abs(X2Position - X1Position)
+ChangeY = abs(Y2Position - Y1Position)
 
-    StepX = 1 if X2Position > X1Position else -1
-    StepY = 1 if Y2Position > Y1Position else -1
+StepX = 1 if X2Position > X1Position else -1
+StepY = 1 if Y2Position > Y1Position else -1
 
-    SwapXY = ChangeY > ChangeX
-    if SwapXY:
-        ChangeX, ChangeY = ChangeY, ChangeX
+SwapXY = ChangeY > ChangeX
+if SwapXY:
+    ChangeX, ChangeY = ChangeY, ChangeX
 
-    Error = (ChangeY * 2) - ChangeX
-    X = X1Position
-    Y = Y1Position
-    RowFormat = [["[ ]" for Rows in range(31)] for Columns in range(31)]
+Error = (ChangeY * 2) - ChangeX
+X = X1Position
+Y = Y1Position
+RowFormat = [["[ ]" for Rows in range(31)] for Columns in range(31)]
 
-    for Values in range(ChangeX + 1):
-        RowFormat[Y][X] = PlottedPoint
+for Values in range(ChangeX + 1):
+    RowFormat[Y][X] = PlottedPoint
 
-        if Error < 0:
-            Error += (ChangeY) * 2
-            if SwapXY:
-                Y += StepY
-            else:
-                X += StepX
-        else:
-            Error += (ChangeY * 2) - (ChangeX * 2)
-            X += StepX
+    if Error < 0:
+        Error += (ChangeY) * 2
+        if SwapXY:
             Y += StepY
+        else:
+            X += StepX
+    else:
+        Error += (ChangeY * 2) - (ChangeX * 2)
+        X += StepX
+        Y += StepY
 
-    for Row in reversed(RowFormat):
-        print("".join(Row))
-
-# ==========
-
-print(BresenhamLine(X1Position, Y1Position, X2Position, Y2Position))
+for Row in reversed(RowFormat):
+    print("".join(Row))
