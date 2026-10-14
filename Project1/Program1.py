@@ -4,6 +4,7 @@
     # This version of the game is only capable of Even Money and Staight Up bets, although I might add more in the future if I get bored :P
     # I've done my best to accurately recreate the probablities of a European roulette table using the random.choice() function.
     # Instead of terminating the program on invalid input by breaking the "while True" loop, I made it give an error for simplicity's sake.
+    # Came back to this project for the challenge portion of the Files in Python Lab with the hopes of storing the balance value to reuse.
 
 import random     # This allows access to the random.choice() feature.
 
@@ -15,23 +16,36 @@ print("The following code was made to recreate a game of roulette:")
 
 # ==========
 
+
+
 # This block is what recreates the colors and numbers seen on a standard European roulette table.
 # It also is what lets me define how many chips to start the user out with.
 NumberList = list(range(0, 37))
 RedValues = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
 GreenValue = 0
-Balance = 20000
+BalanceSave = "Week9Lab/ChallengeFile.txt"
+
+# This block opens ChallengeFile.txt file that stores the balance value and converts it to an interger.
+try:
+    with open(BalanceSave, "r") as SavedBet:
+        Balance = int(SavedBet.read())
+except FileNotFoundError:
+    with open(BalanceSave, "w") as SavedBet:
+        SavedBet.write("20000")
+        Balance = 20000
 
 # This "while True:" loop is what allows the code to repeat the roll/bet cycle.
 while True:
 
-    # This block is a game over condition (bankrupt) that breaks the "while True:" loop, causing the code to end.
+    # This block is a game over condition (bankrupt) that breaks the "while True:" loop, causing the code to end and setting the balance value back to 20000.
     if Balance <= 0:
         print("")
         print("=-=-=-=-=-=-=-=-=-=-=")
         print("You ran out of money!")
         print("=-=-=-=-=-=-=-=-=-=-=")
         print("")
+        with open(BalanceSave, "w") as SavedBet:
+            SavedBet.write("20000")
         break
 
     # This block is used to tell the user their current balance, as well as determine how much they'll bet if anything.
@@ -121,3 +135,6 @@ while True:
     # If the user's bet didn't pass any win condition, then the bet is lost and the code repeats from the start.
     if BetWin == False:
         print(f"Your lost your {BetInterger} bet!")
+
+    with open(BalanceSave, "w") as FinalValue:
+        FinalValue.write(f"{Balance}")
