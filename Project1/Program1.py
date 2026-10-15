@@ -31,8 +31,8 @@ try:
         Balance = int(SavedBet.read())
 except FileNotFoundError:
     with open(BalanceSave, "w") as SavedBet:
-        SavedBet.write("20000")
-        Balance = 20000
+        SavedBet.write("100")
+        Balance = 100
 
 # This "while True:" loop is what allows the code to repeat the roll/bet cycle.
 while True:
@@ -45,7 +45,7 @@ while True:
         print("=-=-=-=-=-=-=-=-=-=-=")
         print("")
         with open(BalanceSave, "w") as SavedBet:
-            SavedBet.write("20000")
+            SavedBet.write("100")
         break
 
     # This block is used to tell the user their current balance, as well as determine how much they'll bet if anything.
